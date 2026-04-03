@@ -9,4 +9,6 @@ public interface IController {
     void setView(IView view);
 
     void proceed();
+
+    void manageOrder(Order order);
 }

@@ -6,6 +6,7 @@ import com.jad.view.IView;
 public class Controller implements IController {
     private IView view;
     private IModel model;
+    private boolean running;
 
     @Override
     public void setModel(final IModel model) {
@@ -21,6 +22,14 @@ public class Controller implements IController {
     public void proceed() {
         if (this.view == null) throw new RuntimeException("View cannot be null.");
         if (this.model == null) throw new RuntimeException("Model cannot be null.");
-        this.view.displayMessage(this.model.getMessage());
+        this.running = true;
+        do {
+            this.view.displayMessage(this, this.model.getMessage());
+        } while (this.running);
+    }
+
+    @Override
+    public void manageOrder(final Order order) {
+        if (order == Order.STOP) this.running = false;
     }
 }
