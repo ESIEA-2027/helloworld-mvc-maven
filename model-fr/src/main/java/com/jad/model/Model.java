@@ -5,4 +5,10 @@ public class Model implements IModel {
     public String getMessage() {
         return "Bonjour le monde !";
     }
+
+
+    @Override
+    public String getContinue() {
+        return "Voulez-vous continuez ?";
+    }
 }

@@ -12,8 +12,8 @@ public enum Main {
 
     public static void main(String[] args) {
         IController controller = new Controller();
-        IView view = new View();
         IModel model = new Model();
+        IView view = new View(model);
         controller.setView(view);
         controller.setModel(model);
         controller.proceed();
